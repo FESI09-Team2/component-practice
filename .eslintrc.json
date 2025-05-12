@@ -1,0 +1,12 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "rules": {
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "function-declaration"
+      }
+    ],
+    "curly": ["error", "all"]
+  }
+}
