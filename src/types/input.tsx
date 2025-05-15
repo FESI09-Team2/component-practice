@@ -1,5 +1,5 @@
 export interface InputProps {
-  inputType: 'text' | 'password';
+  inputType?: 'text' | 'password';
 }
 
 export interface UseInputProps {
