@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Sort from '../../../public/assets/common/sort.png';
 import Image from 'next/image';
+import Sort from '../../../public/assets/common/sort.png';
 import { DropdownProps } from '@/types/dropdown';
 
 export default function DropdownMenuDropdown({ onSelect }: DropdownProps) {
