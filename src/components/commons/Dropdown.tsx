@@ -3,38 +3,43 @@
 import { useState } from 'react';
 import Sort from '../../../public/assets/common/sort.png';
 
-export default function FrameworkDropdown() {
+export default function DropdownMenuDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFramework, setSelectedFramework] = useState('최신 순');
+  const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
 
-  const frameworks = ['최신 순', '리뷰 높은 순', '참여 인원 순'];
+  const DropdownMenus = ['최신 순', '리뷰 높은 순', '참여 인원 순'];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const selectFramework = (framework: string) => {
-    setSelectedFramework(framework);
+  const selectDropdownMenu = (DropdownMenu: string) => {
+    setSelectedDropdownMenu(DropdownMenu);
     setIsOpen(false);
   };
 
   return (
-    <div>
-      <div>
-        {/* Dropdown Button */}
-        <button onClick={toggleDropdown}>
+    <div className="mx-auto w-auto">
+      <div className="relative bg-white">
+        <button
+          onClick={toggleDropdown}
+          className="flex items-center justify-between gap-[10px] rounded-xl border border-gray-100 px-[12px] py-[8px] text-black"
+        >
+          {/*TODO: 이미지 관련 수정 필요 */}
           <img src={Sort.src} alt="정렬" width={20} height={20} />
-
-          <span>{selectedFramework}</span>
+          <span>{selectedDropdownMenu}</span>
         </button>
 
         {/* Dropdown Menu */}
         {isOpen && (
           <div>
-            {frameworks.map((framework) => (
-              <div key={framework} onClick={() => selectFramework(framework)}>
-                {selectedFramework === framework && <span>✓</span>}
-                <span>{framework}</span>
+            {DropdownMenus.map((DropdownMenu) => (
+              <div
+                key={DropdownMenu}
+                onClick={() => selectDropdownMenu(DropdownMenu)}
+              >
+                {selectedDropdownMenu === DropdownMenu && <span>✓</span>}
+                <span>{DropdownMenu}</span>
               </div>
             ))}
           </div>
