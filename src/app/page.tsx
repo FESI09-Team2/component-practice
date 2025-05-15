@@ -1,3 +1,12 @@
+import Input from '@/components/commons/Input';
+
 export default function Home() {
-  return <div>홈 페이지</div>;
+  return (
+    <div>
+      <div className="w-[300px]">
+        <Input />
+        <Input inputType="password" />
+      </div>
+    </div>
+  );
 }
