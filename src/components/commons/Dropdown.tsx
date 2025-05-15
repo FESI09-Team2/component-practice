@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Sort from '../../../public/assets/common/sort.png';
 
 export default function FrameworkDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,8 @@ export default function FrameworkDropdown() {
       <div>
         {/* Dropdown Button */}
         <button onClick={toggleDropdown}>
-          <span>버튼자리</span>
+          <img src={Sort.src} alt="정렬" width={20} height={20} />
+
           <span>{selectedFramework}</span>
         </button>
 
