@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DropdownMenuProps } from '@/types/dropdown';
 
-// TODO: MSW로 변경
+// TODO: API 완성 후 삭제
 const mockData = [
   { id: 1, title: 'A', review: 4.5, participants: 12, createdAt: '2024-05-14' },
   { id: 2, title: 'B', review: 4.8, participants: 8, createdAt: '2024-05-12' },

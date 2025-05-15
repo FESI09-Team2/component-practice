@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Sort from '../../../public/assets/common/sort.png';
+import DefaultSortIcon from '../../../public/assets/common/ic_sort.svg';
 import { DropdownProps } from '@/types/dropdown';
 
 export default function DropdownMenuDropdown({
   onSelect,
   menuOptions,
+  iconSrc = DefaultSortIcon,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
@@ -29,7 +30,7 @@ export default function DropdownMenuDropdown({
           onClick={toggleDropdown}
           className="flex items-center justify-between gap-[10px] rounded-xl border border-gray-100 px-[12px] py-[8px] text-gray-800"
         >
-          <Image src={Sort.src} alt="정렬" width={20} height={20} />
+          <Image src={iconSrc} alt="정렬" width={20} height={20} />
           <span>{selectedDropdownMenu}</span>
         </button>
 
