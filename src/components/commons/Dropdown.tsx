@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import DefaultSortIcon from '../../../public/assets/common/ic_sort.svg';
+import DefaultSortIcon from '@public/assets/common/ic_sort.svg';
 import { DropdownProps } from '@/types/dropdown';
 
 export default function DropdownMenuDropdown({

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Dropdown from '@/components/commons/Dropdown';
 import useSortedData from '@/hooks/useSortByOption';
-import ArrowDown from '../../../../public/assets/common/ic_arrowdown.svg';
+import ArrowDown from '@public/assets/common/ic_arrowdown.svg';
 
 export default function Home() {
   const [sortOption, setSortOption] = useState('최신 순');
