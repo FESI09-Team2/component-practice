@@ -33,4 +33,20 @@ describe('input 컴포넌트 렌더링', () => {
     fireEvent.click(button);
     expect(inputTypePassword).toHaveAttribute('type', 'password');
   });
+
+  test('input inputType text 아닐 경우 버튼이 보이지 않아야 한다.', () => {
+    render(<Input inputType="text" />);
+    const button = screen.queryByRole('button');
+    expect(button).toBeNull();
+  });
+
+  test('input password 일때 버튼의 이미지가 상태에 따라 달라진다.', () => {
+    render(<Input inputType="password" />);
+    const button = screen.getByRole('button');
+    const image = screen.getByAltText('visibility');
+
+    expect(image).toHaveAttribute('src', '/visibility_off.svg');
+    fireEvent.click(button);
+    expect(image).toHaveAttribute('src', '/visibility_on.svg');
+  });
 });

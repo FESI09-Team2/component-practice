@@ -28,7 +28,7 @@ export default function Input({ inputType = 'text' }: { inputType?: string }) {
           onClick={() => setIsVisible((prev) => !prev)}
         >
           <Image
-            src={isVisible ? 'visibility_on.svg' : '/visibility_off.svg'}
+            src={isVisible ? '/visibility_on.svg' : '/visibility_off.svg'}
             alt="visibility"
             width={20}
             height={20}
