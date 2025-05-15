@@ -1,3 +1,4 @@
-echo "🔍 commit 이전에 prettier, lint 규칙을 적용합니다..."
+echo "🔍 commit prettier, lint, test 검사 중..."
 npx lint-staged
-echo "✅ 모든 prettier, lint 규칙이 성공적으로 적용되었습니다."
+npm run test:changed
+echo "✅ prettier, lint, test 모두 통과했습니다!"
