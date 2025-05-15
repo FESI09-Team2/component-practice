@@ -1,9 +1,10 @@
 'use client';
 import useInput from '@/hooks/useInput';
+import { InputProps } from '@/types/input';
 import Image from 'next/image';
 import { useState } from 'react';
 
-export default function Input({ inputType = 'text' }: { inputType?: string }) {
+export default function Input({ inputType = 'text' }: InputProps) {
   const { value, handleChange } = useInput({ initialValue: '' });
   const [isVisible, setIsVisible] = useState(false);
 
