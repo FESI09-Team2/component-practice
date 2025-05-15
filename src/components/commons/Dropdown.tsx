@@ -3,11 +3,7 @@
 import { useState } from 'react';
 import Sort from '../../../public/assets/common/sort.png';
 import Image from 'next/image';
-
-// TODO: DropdownProps interface 분리
-interface DropdownProps {
-  onSelect: (selectedDropdownMenu: string) => void;
-}
+import { DropdownProps } from '@/types/dropdown';
 
 export default function DropdownMenuDropdown({ onSelect }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);

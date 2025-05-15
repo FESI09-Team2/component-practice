@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Dropdown from '@/components/commons/Dropdown';
-
-// TODO: interface 분리
-interface DropdownMenuProps {
-  id: number;
-  title: string;
-  review: number;
-  participants: number;
-  createdAt: string;
-}
+import { DropdownMenuProps } from '@/types/dropdown';
 
 // TODO: MSW로 변경
 const mockData = [
