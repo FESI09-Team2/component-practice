@@ -8,4 +8,5 @@ export interface DropdownMenuProps {
 
 export interface DropdownProps {
   onSelect: (selectedDropdownMenu: string) => void;
+  menuOptions: string[];
 }

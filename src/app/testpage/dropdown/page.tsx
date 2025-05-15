@@ -10,7 +10,10 @@ export default function Home() {
 
   return (
     <>
-      <Dropdown onSelect={setSortOption} />
+      <Dropdown
+        onSelect={setSortOption}
+        menuOptions={['최신 순', '리뷰 높은 순', '참여 인원 순']}
+      />
       <div className="mt-4 space-y-2">
         {sortedData.map((item) => (
           <div key={item.id} className="rounded-lg border px-4 py-2 shadow-sm">
