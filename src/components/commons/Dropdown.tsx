@@ -32,7 +32,6 @@ export default function DropdownMenuDropdown({ onSelect }: DropdownProps) {
           onClick={toggleDropdown}
           className="flex items-center justify-between gap-[10px] rounded-xl border border-gray-100 px-[12px] py-[8px] text-gray-800"
         >
-          {/*TODO: 이미지 관련 수정 필요 */}
           <Image src={Sort.src} alt="정렬" width={20} height={20} />
           <span>{selectedDropdownMenu}</span>
         </button>
