@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import Sort from '../../../public/assets/common/sort.png';
 
-export default function DropdownMenuDropdown() {
+interface DropdownMenuDropdownProps {
+  onSelect: (selectedDropdownMenu: string) => void;
+}
+
+export default function DropdownMenuDropdown({
+  onSelect,
+}: DropdownMenuDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
 
@@ -13,9 +19,10 @@ export default function DropdownMenuDropdown() {
     setIsOpen(!isOpen);
   };
 
-  const selectDropdownMenu = (DropdownMenu: string) => {
+  const handleSelect = (DropdownMenu: string) => {
     setSelectedDropdownMenu(DropdownMenu);
     setIsOpen(false);
+    onSelect(DropdownMenu);
   };
 
   return (
@@ -35,7 +42,7 @@ export default function DropdownMenuDropdown() {
             {DropdownMenus.map((DropdownMenu) => (
               <div
                 key={DropdownMenu}
-                onClick={() => selectDropdownMenu(DropdownMenu)}
+                onClick={() => handleSelect(DropdownMenu)}
                 className="cursor-pointer rounded-xl px-[12px] py-[8px] hover:bg-orange-100"
               >
                 <span>{DropdownMenu}</span>
