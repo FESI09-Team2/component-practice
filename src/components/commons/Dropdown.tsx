@@ -31,7 +31,7 @@ export default function DropdownMenuDropdown({
           className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
           <Image src={iconSrc} alt="정렬" width={20} height={20} />
-          <span>{selectedDropdownMenu}</span>
+          <span className="hidden sm:inline">{selectedDropdownMenu}</span>
         </button>
 
         {isOpen && (
