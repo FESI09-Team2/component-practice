@@ -28,19 +28,19 @@ export default function DropdownMenuDropdown({
       <div className="relative bg-white">
         <button
           onClick={toggleDropdown}
-          className="flex items-center justify-between gap-[10px] rounded-xl border border-gray-100 px-[12px] py-[8px] text-gray-800"
+          className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
           <Image src={iconSrc} alt="정렬" width={20} height={20} />
           <span>{selectedDropdownMenu}</span>
         </button>
 
         {isOpen && (
-          <div className="absolute gap-[10px] rounded-xl border border-gray-100 bg-white text-gray-800">
+          <div className="absolute gap-[0.625rem] rounded-xl border border-gray-100 bg-white text-gray-800">
             {menuOptions.map((option) => (
               <div
                 key={option}
                 onClick={() => handleSelect(option)}
-                className="cursor-pointer rounded-xl px-[12px] py-[8px] hover:bg-orange-100"
+                className="cursor-pointer rounded-xl px-[0.75rem] py-[0.5rem] hover:bg-orange-100"
               >
                 <span>{option}</span>
               </div>
