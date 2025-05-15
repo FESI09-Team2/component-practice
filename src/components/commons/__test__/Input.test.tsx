@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('input 컴포넌트 렌더링', () => {
   test('input inputType text 일때 onchange 이벤트', () => {
-    render(<Input />);
+    render(<Input inputType="text" />);
 
     const inputTypeText = screen.getByPlaceholderText('할일을 적어주세요.');
     expect(inputTypeText).toBeInTheDocument();
