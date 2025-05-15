@@ -9,7 +9,7 @@ export default function Input({ inputType = 'text' }: { inputType?: string }) {
 
   return (
     <div
-      className={`inline-flex min-w-[240px] items-center rounded-md border border-gray-200 bg-white px-2 ${value ? 'border-2 border-orange-500' : 'border'}`}
+      className={`inline-flex min-w-[15rem] items-center rounded-md border border-gray-200 bg-white px-2 ${value ? 'border-2 border-orange-500' : 'border'}`}
     >
       <input
         className="w-full py-1 outline-none"
