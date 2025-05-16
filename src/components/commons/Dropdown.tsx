@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import DefaultSortIcon from '@public/assets/common/ic_sort.svg';
+import DefaultSortIcon from '@/assets/common/ic_sort.svg';
 import { DropdownProps } from '@/types/dropdown';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
