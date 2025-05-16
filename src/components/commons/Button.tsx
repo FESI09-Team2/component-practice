@@ -15,6 +15,7 @@ export default function Button({
   size = 'large',
   disabled = false,
   className,
+  ...props
 }: ButtonProps) {
   const buttonClasses = clsx(
     'h-[2.75rem] rounded-[0.75rem] flex items-center justify-center text-[1rem] font-semibold',
@@ -35,7 +36,7 @@ export default function Button({
   );
 
   return (
-    <button className={buttonClasses} disabled={disabled}>
+    <button className={buttonClasses} disabled={disabled} {...props}>
       {children}
     </button>
   );
