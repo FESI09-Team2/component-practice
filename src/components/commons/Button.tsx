@@ -36,7 +36,12 @@ export default function Button({
   );
 
   return (
-    <button className={buttonClasses} disabled={disabled} {...props}>
+    <button
+      type="button"
+      className={buttonClasses}
+      disabled={disabled}
+      {...props}
+    >
       {children}
     </button>
   );
