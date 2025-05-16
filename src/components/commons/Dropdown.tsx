@@ -34,7 +34,8 @@ export default function Dropdown({
   };
 
   return (
-    <div className="mx-auto w-auto" ref={dropdownRef}>
+    // TODO: 글자나 시안 확정됨에 따라 w-auto랑 h-auto 수정진행
+    <div className="h-auto w-auto" ref={dropdownRef}>
       <div className="relative bg-white">
         <button
           onClick={handleDropdownMenu}
