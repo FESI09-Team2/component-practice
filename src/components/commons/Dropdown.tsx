@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import DefaultSortIcon from '@public/assets/common/ic_sort.svg';
 import { DropdownProps } from '@/types/dropdown';
@@ -12,6 +12,7 @@ export default function DropdownMenuDropdown({
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -25,8 +26,25 @@ export default function DropdownMenuDropdown({
 
   const isDefeaultIcon = iconSrc === DefaultSortIcon;
 
+  // 드롭다운 외부 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="mx-auto w-auto">
+    <div className="mx-auto w-auto" ref={dropdownRef}>
       <div className="relative bg-white">
         <button
           onClick={toggleDropdown}
