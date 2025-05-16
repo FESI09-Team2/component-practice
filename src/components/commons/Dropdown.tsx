@@ -18,7 +18,7 @@ export default function DropdownMenuDropdown({
 
   useClickOutside(dropdownRef, () => setIsOpen(false));
 
-  const toggleDropdown = () => {
+  const handleDropdownMenu = () => {
     setIsOpen(!isOpen);
   };
 
@@ -32,7 +32,7 @@ export default function DropdownMenuDropdown({
     <div className="mx-auto w-auto" ref={dropdownRef}>
       <div className="relative bg-white">
         <button
-          onClick={toggleDropdown}
+          onClick={handleDropdownMenu}
           className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
           {isDefeaultIcon ? (
