@@ -1,6 +1,7 @@
 'use client';
 import useInput from '@/hooks/useInput';
 import { InputProps } from '@/types/input';
+import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -10,11 +11,14 @@ export default function Input({ inputType = 'text' }: InputProps) {
 
   return (
     <div
-      className={`inline-flex min-w-[15rem] items-center rounded-md border border-gray-200 bg-white px-2 ${value ? 'border-2 border-orange-500' : 'border'}`}
+      className={clsx(
+        'flex max-w-[15rem] items-center rounded-xs border border-gray-200 bg-white px-2',
+        value ? 'border-2 border-orange-500' : 'border',
+      )}
     >
       <input
         className="w-full py-1 outline-none"
-        type={isVisible ? 'text' : 'password'}
+        type={inputType === 'password' && !isVisible ? 'password' : 'text'}
         value={value}
         onChange={handleChange}
         placeholder={
