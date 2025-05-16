@@ -29,7 +29,11 @@ export default function Input({ inputType = 'text' }: InputProps) {
           onClick={() => setIsVisible((prev) => !prev)}
         >
           <Image
-            src={isVisible ? '/visibility_on.svg' : '/visibility_off.svg'}
+            src={
+              isVisible
+                ? '/assets/common/visibility_on.svg'
+                : '/assets/common/visibility_off.svg'
+            }
             alt="visibility"
             width={20}
             height={20}

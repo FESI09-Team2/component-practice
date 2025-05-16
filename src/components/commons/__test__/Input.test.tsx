@@ -45,8 +45,8 @@ describe('input 컴포넌트 렌더링', () => {
     const button = screen.getByRole('button');
     const image = screen.getByAltText('visibility');
 
-    expect(image).toHaveAttribute('src', '/visibility_off.svg');
+    expect(image).toHaveAttribute('src', '/assets/common/visibility_off.svg');
     fireEvent.click(button);
-    expect(image).toHaveAttribute('src', '/visibility_on.svg');
+    expect(image).toHaveAttribute('src', '/assets/common/visibility_on.svg');
   });
 });
