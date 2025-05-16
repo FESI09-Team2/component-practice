@@ -3,8 +3,13 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import DefaultSortIcon from '@/assets/common/ic_sort.svg';
-import { DropdownProps } from '@/types/dropdown';
 import { useClickOutside } from '@/hooks/useClickOutside';
+
+interface DropdownProps {
+  onSelect: (selectedDropdownMenu: string) => void;
+  menuOptions: string[];
+  iconSrc?: string;
+}
 
 export default function Dropdown({
   onSelect,

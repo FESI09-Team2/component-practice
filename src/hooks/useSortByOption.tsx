@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { DropdownMenuProps } from '@/types/dropdown';
 
 // TODO: API 완성 후 삭제
 const mockData = [
@@ -7,6 +6,15 @@ const mockData = [
   { id: 2, title: 'B', review: 4.8, participants: 8, createdAt: '2024-05-12' },
   { id: 3, title: 'C', review: 4.0, participants: 20, createdAt: '2024-05-10' },
 ];
+
+// TODO: API 데이터 확인 변경 필요
+export interface DropdownMenuProps {
+  id: number;
+  title: string;
+  review: number;
+  participants: number;
+  createdAt: string;
+}
 
 export default function useSortedData(sortOption: string) {
   const [sortedData, setSortedData] = useState<DropdownMenuProps[]>([]);
