@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import DefaultSortIcon from '@public/assets/common/ic_sort.svg';
 import { DropdownProps } from '@/types/dropdown';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 export default function DropdownMenuDropdown({
   onSelect,
@@ -13,6 +14,9 @@ export default function DropdownMenuDropdown({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const isDefeaultIcon = iconSrc === DefaultSortIcon;
+
+  useClickOutside(dropdownRef, () => setIsOpen(false));
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -23,25 +27,6 @@ export default function DropdownMenuDropdown({
     setIsOpen(false);
     onSelect(DropdownMenu);
   };
-
-  const isDefeaultIcon = iconSrc === DefaultSortIcon;
-
-  // 드롭다운 외부 클릭 시 드롭다운 닫기
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="mx-auto w-auto" ref={dropdownRef}>
