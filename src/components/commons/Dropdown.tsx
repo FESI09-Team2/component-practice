@@ -23,6 +23,8 @@ export default function DropdownMenuDropdown({
     onSelect(DropdownMenu);
   };
 
+  const isDefeaultIcon = iconSrc === DefaultSortIcon;
+
   return (
     <div className="mx-auto w-auto">
       <div className="relative bg-white">
@@ -30,8 +32,17 @@ export default function DropdownMenuDropdown({
           onClick={toggleDropdown}
           className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
-          <Image src={iconSrc} alt="정렬" width={20} height={20} />
-          <span className="hidden sm:inline">{selectedDropdownMenu}</span>
+          {isDefeaultIcon ? (
+            <>
+              <Image src={iconSrc} alt="정렬" width={24} height={24} />
+              <span className="hidden sm:inline">{selectedDropdownMenu}</span>
+            </>
+          ) : (
+            <>
+              <span>{selectedDropdownMenu}</span>
+              <Image src={iconSrc} alt="정렬" width={24} height={24} />
+            </>
+          )}
         </button>
 
         {isOpen && (
