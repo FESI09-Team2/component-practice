@@ -6,7 +6,7 @@ import DefaultSortIcon from '@public/assets/common/ic_sort.svg';
 import { DropdownProps } from '@/types/dropdown';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
-export default function DropdownMenuDropdown({
+export default function Dropdown({
   onSelect,
   menuOptions,
   iconSrc = DefaultSortIcon,
@@ -14,7 +14,7 @@ export default function DropdownMenuDropdown({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const isDefeaultIcon = iconSrc === DefaultSortIcon;
+  const isDefaultIcon = iconSrc === DefaultSortIcon;
 
   useClickOutside(dropdownRef, () => setIsOpen(false));
 
@@ -35,7 +35,7 @@ export default function DropdownMenuDropdown({
           onClick={handleDropdownMenu}
           className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
-          {isDefeaultIcon ? (
+          {isDefaultIcon ? (
             <>
               <Image src={iconSrc} alt="정렬" width={24} height={24} />
               <span className="hidden sm:inline">{selectedDropdownMenu}</span>
