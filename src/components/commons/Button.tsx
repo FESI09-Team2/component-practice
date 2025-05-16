@@ -17,7 +17,7 @@ export default function Button({
   className,
 }: ButtonProps) {
   const buttonClasses = clsx(
-    'h-[44px] rounded-[12px] flex items-center justify-center text-[16px] font-semibold',
+    'h-[2.75rem] rounded-[0.75rem] flex items-center justify-center text-[1rem] font-semibold',
     {
       'bg-orange-600 hover:bg-orange-700 active:bg-orange-800  text-white':
         variant === 'solid' && !disabled,
@@ -28,11 +28,15 @@ export default function Button({
         variant === 'outline' && disabled,
     },
     {
-      'w-[332px]': size === 'large',
-      'w-[120px]': size === 'small',
+      'w-[20.7rem]': size === 'large',
+      'w-[7.5rem]': size === 'small',
     },
     className,
   );
 
-  return <button className={buttonClasses}>{children}</button>;
+  return (
+    <button className={buttonClasses} disabled={disabled}>
+      {children}
+    </button>
+  );
 }
