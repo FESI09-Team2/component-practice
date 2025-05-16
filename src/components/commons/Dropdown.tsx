@@ -1,25 +1,23 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import Image from 'next/image';
+import { ReactNode, useRef, useState } from 'react';
 import DefaultSortIcon from '@/assets/common/ic_sort.svg';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
 interface DropdownProps {
   onSelect: (selectedDropdownMenu: string) => void;
   menuOptions: string[];
-  iconSrc?: string;
+  customIcon?: ReactNode;
 }
 
 export default function Dropdown({
   onSelect,
   menuOptions,
-  iconSrc = DefaultSortIcon,
+  customIcon,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const isDefaultIcon = iconSrc === DefaultSortIcon;
 
   useClickOutside(dropdownRef, () => setIsOpen(false));
 
@@ -34,22 +32,22 @@ export default function Dropdown({
   };
 
   return (
-    // TODO: 글자나 시안 확정됨에 따라 w-auto랑 h-auto 수정진행
+    // TODO: 글자나 시안 확정됨에 따라 w-auto랑 h-auto 수정
     <div className="h-auto w-auto" ref={dropdownRef}>
       <div className="relative bg-white">
         <button
           onClick={handleDropdownMenu}
           className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
-          {isDefaultIcon ? (
+          {customIcon ? (
             <>
-              <Image src={iconSrc} alt="정렬" width={24} height={24} />
-              <span className="hidden sm:inline">{selectedDropdownMenu}</span>
+              {customIcon}
+              <span>{selectedDropdownMenu}</span>
             </>
           ) : (
             <>
-              <span>{selectedDropdownMenu}</span>
-              <Image src={iconSrc} alt="정렬" width={24} height={24} />
+              <span className="hidden sm:inline">{selectedDropdownMenu}</span>
+              <DefaultSortIcon />
             </>
           )}
         </button>
