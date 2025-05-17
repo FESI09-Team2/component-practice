@@ -1,31 +1,42 @@
 'use client';
-import useInput from '@/hooks/useInput';
-import { InputProps } from '@/types/input';
-import clsx from 'clsx';
-import Image from 'next/image';
 import { useState } from 'react';
+import clsx from 'clsx';
+import VisibilityOn from '@/assets/common/ic_visibility_on.svg';
+import VisibilityOff from '@/assets/common/ic_visibility_off.svg';
+import Image from 'next/image';
 
-export default function Input({ inputType = 'text' }: InputProps) {
-  const { value, handleChange } = useInput({ initialValue: '' });
+export interface InputProps {
+  inputType?: string;
+  placeholder?: string;
+  name?: string;
+  value?: string;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function Input({
+  inputType,
+  placeholder,
+  value,
+  handleChange,
+  name,
+}: InputProps) {
   const [isVisible, setIsVisible] = useState(false);
 
+  const inputTypeAttr =
+    inputType === 'password' ? (isVisible ? 'text' : 'password') : inputType;
   return (
     <div
       className={clsx(
-        'flex max-w-[15rem] items-center rounded-xs border border-gray-200 bg-white px-2',
-        value ? 'border-2 border-orange-500' : 'border',
+        'flex max-w-[15rem] items-center rounded-xs border border-gray-200 bg-white px-2 focus-within:border-orange-500',
       )}
     >
       <input
         className="w-full py-1 outline-none"
-        type={inputType === 'password' && !isVisible ? 'password' : 'text'}
+        type={inputTypeAttr}
         value={value}
+        name={name}
         onChange={handleChange}
-        placeholder={
-          inputType === 'password'
-            ? '비밀번호를 입력해주세요.'
-            : '할일을 적어주세요.'
-        }
+        placeholder={placeholder}
       />
       {inputType === 'password' && (
         <button
@@ -33,15 +44,11 @@ export default function Input({ inputType = 'text' }: InputProps) {
           onClick={() => setIsVisible((prev) => !prev)}
         >
           <Image
-            src={
-              isVisible
-                ? '/assets/common/visibility_on.svg'
-                : '/assets/common/visibility_off.svg'
-            }
+            src={isVisible ? VisibilityOn : VisibilityOff}
             alt="visibility"
-            width={20}
-            height={20}
-          />
+            width="20"
+            height="20"
+          ></Image>
         </button>
       )}
     </div>

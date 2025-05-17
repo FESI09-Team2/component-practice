@@ -1,13 +1,17 @@
-import { UseInputProps, UseInputReturn } from '@/types/input';
 import { useState } from 'react';
 
-export default function useInput({
-  initialValue,
-}: UseInputProps): UseInputReturn {
+interface UseInputProps {
+  initialValue: { [key: string]: string };
+}
+
+export default function useInput({ initialValue }: UseInputProps) {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const { name, value } = e.target;
+    setValue((prev) => ({ ...prev, [name]: value }));
+    console.log(value);
   };
+
   return { value, handleChange };
 }

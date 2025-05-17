@@ -4,20 +4,32 @@ import { ChangeEvent } from 'react';
 
 describe('useInput 테스트', () => {
   test('초기값이 올바르게 들어갔는지 확인', () => {
-    const { result } = renderHook(() => useInput({ initialValue: '' }));
-    expect(result.current.value).toBe('');
+    const { result } = renderHook(() =>
+      useInput({ initialValue: { username: '', password: '', number: '' } }),
+    );
+    expect(result.current.value).toEqual({
+      username: '',
+      password: '',
+      number: '',
+    });
   });
 
   test('value 값이 올바르게 입력 되는지 확인', () => {
-    const { result } = renderHook(() => useInput({ initialValue: '' }));
+    const { result } = renderHook(() =>
+      useInput({ initialValue: { username: '', password: '', number: '' } }),
+    );
 
     const mockEvent = {
-      target: { value: '123' },
+      target: { name: 'username', value: '김철수' },
     } as ChangeEvent<HTMLInputElement>;
 
     act(() => {
       result.current.handleChange(mockEvent);
     });
-    expect(result.current.value).toBe('123');
+    expect(result.current.value).toEqual({
+      username: '김철수',
+      password: '',
+      number: '',
+    });
   });
 });

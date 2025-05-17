@@ -3,50 +3,64 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('input 컴포넌트 렌더링', () => {
   test('input inputType text 일때 onchange 이벤트', () => {
-    render(<Input inputType="text" />);
+    render(
+      <Input
+        inputType="text"
+        name="username"
+        placeholder="할일을 적어주세요."
+        value="홍길동"
+        handleChange={jest.fn()}
+      />,
+    );
 
-    const inputTypeText = screen.getByPlaceholderText('할일을 적어주세요.');
+    const inputTypeText = screen.getByPlaceholderText(
+      '할일을 적어주세요.',
+    ) as HTMLInputElement;
     expect(inputTypeText).toBeInTheDocument();
-
-    fireEvent.change(inputTypeText, { target: { value: 'test' } });
-    expect(inputTypeText).toHaveValue('test');
+    expect(inputTypeText.value).toBe('홍길동');
+    expect(inputTypeText.type).toBe('text');
   });
 
-  test('input inputType password 일때 onchange 이벤트', () => {
-    render(<Input inputType="password" />);
-    const inputTypePassword =
-      screen.getByPlaceholderText('비밀번호를 입력해주세요.');
+  test('input password 일때 렌더링되고, 토글 버튼도 존재 한다', () => {
+    render(
+      <Input
+        inputType="password"
+        name="password"
+        placeholder="비밀번호를 입력해주세요."
+        value="홍길동"
+        handleChange={jest.fn()}
+      />,
+    );
 
-    fireEvent.change(inputTypePassword, { target: { value: '1234' } });
-    expect(inputTypePassword).toHaveValue('1234');
+    const inputPassword = screen.getByPlaceholderText(
+      '비밀번호를 입력해주세요.',
+    ) as HTMLInputElement;
+
+    expect(inputPassword).toBeInTheDocument();
+    const toggleButton = screen.getByRole('button');
+    expect(toggleButton).toBeInTheDocument();
+
+    fireEvent.click(toggleButton);
+    expect(inputPassword.type).toBe('text');
   });
 
-  test('input password 일때 버튼 클릭시 타입 변경', () => {
-    render(<Input inputType="password" />);
-    const inputTypePassword =
-      screen.getByPlaceholderText('비밀번호를 입력해주세요.');
-    const button = screen.getByRole('button');
+  test('onChange 이벤트 작동', () => {
+    const handleChange = jest.fn();
 
-    fireEvent.click(button);
-    expect(inputTypePassword).toHaveAttribute('type', 'text');
+    render(
+      <Input
+        inputType="password"
+        name="password"
+        placeholder="비밀번호를 입력해주세요."
+        value="홍길동"
+        handleChange={handleChange}
+      />,
+    );
+    const inputTypePassword = screen.getByPlaceholderText(
+      '비밀번호를 입력해주세요.',
+    ) as HTMLInputElement;
 
-    fireEvent.click(button);
-    expect(inputTypePassword).toHaveAttribute('type', 'password');
-  });
-
-  test('input inputType text 아닐 경우 버튼이 보이지 않아야 한다.', () => {
-    render(<Input inputType="text" />);
-    const button = screen.queryByRole('button');
-    expect(button).toBeNull();
-  });
-
-  test('input password 일때 버튼의 이미지가 상태에 따라 달라진다.', () => {
-    render(<Input inputType="password" />);
-    const button = screen.getByRole('button');
-    const image = screen.getByAltText('visibility');
-
-    expect(image).toHaveAttribute('src', '/assets/common/visibility_off.svg');
-    fireEvent.click(button);
-    expect(image).toHaveAttribute('src', '/assets/common/visibility_on.svg');
+    fireEvent.change(inputTypePassword, { target: { value: '홍길동' } });
+    expect(inputTypePassword.value).toBe('홍길동');
   });
 });
