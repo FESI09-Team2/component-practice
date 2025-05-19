@@ -5,16 +5,18 @@ import Dropdown from '@/components/commons/Dropdown';
 import useSortedData from '@/hooks/useSortByOption';
 import ArrowDown from '@/assets/common/ic_arrowdown.svg';
 
+const OPTION = ['최신 순', '리뷰 높은 순', '참여 인원 순'];
+
 export default function Home() {
-  const [sortOption, setSortOption] = useState('최신 순');
+  const [sortOption, setSortOption] = useState(OPTION[0]);
   const sortedData = useSortedData(sortOption);
 
   return (
     <>
       <Dropdown
         onSelect={setSortOption}
-        menuOptions={['최신 순', '리뷰 높은 순', '참여 인원 순']} // 여기서 정렬 옵션을 설정
-        customIcon={<ArrowDown />} // 지정하지 않으면 기본 아이콘 사용
+        menuOptions={OPTION} // 여기서 정렬 옵션을 설정
+        prefixIcon={<ArrowDown />} // 지정하지 않으면 기본 아이콘 사용
       />
       <div className="mt-4 space-y-2">
         {sortedData.map((item) => (
