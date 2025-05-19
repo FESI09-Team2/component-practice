@@ -14,7 +14,7 @@ export default function Home() {
       <Dropdown
         onSelect={setSortOption}
         menuOptions={['최신 순', '리뷰 높은 순', '참여 인원 순']} // 여기서 정렬 옵션을 설정
-        customIcon={<ArrowDown />} // 지정하지 않으면 기본 아이콘 사용
+        prefixIcon={<ArrowDown />} // 지정하지 않으면 기본 아이콘 사용
       />
       <div className="mt-4 space-y-2">
         {sortedData.map((item) => (

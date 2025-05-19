@@ -7,13 +7,13 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 interface DropdownProps {
   onSelect: (selectedDropdownMenu: string) => void;
   menuOptions: string[];
-  customIcon?: ReactNode;
+  prefixIcon?: ReactNode;
 }
 
 export default function Dropdown({
   onSelect,
   menuOptions,
-  customIcon,
+  prefixIcon,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDropdownMenu, setSelectedDropdownMenu] = useState('최신 순');
@@ -39,9 +39,9 @@ export default function Dropdown({
           onClick={handleDropdownMenu}
           className="flex items-center justify-between gap-[0.625rem] rounded-xl border border-gray-100 px-[0.75rem] py-[0.5rem] text-gray-800"
         >
-          {customIcon ? (
+          {prefixIcon ? (
             <>
-              {customIcon}
+              {prefixIcon}
               <span>{selectedDropdownMenu}</span>
             </>
           ) : (
