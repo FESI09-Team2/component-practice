@@ -3,7 +3,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import { useClickOutside } from '../useClickOutside';
 
 afterEach(cleanup);
-
+        
 function TestComponent({ onClickOutside }: { onClickOutside: () => void }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -14,7 +14,6 @@ function TestComponent({ onClickOutside }: { onClickOutside: () => void }) {
       <div ref={ref} data-testid="inside">
         Inside Element
       </div>
-
       <div data-testid="outside">Outside Element</div>
     </div>
   );

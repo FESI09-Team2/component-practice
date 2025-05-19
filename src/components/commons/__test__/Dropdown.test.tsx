@@ -25,7 +25,6 @@ describe('Dropdown 테스트 입니다.', () => {
         prefixIcon={<span data-testid="icon">icon</span>}
       />,
     );
-
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
