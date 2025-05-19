@@ -8,7 +8,7 @@ import ArrowDown from '@/assets/common/ic_arrowdown.svg';
 const OPTION = ['최신 순', '리뷰 높은 순', '참여 인원 순'];
 
 export default function Home() {
-  const [sortOption, setSortOption] = useState('최신 순');
+  const [sortOption, setSortOption] = useState(OPTION[0]);
   const sortedData = useSortedData(sortOption);
 
   return (
